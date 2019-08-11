@@ -13,14 +13,14 @@ function getAllPixels(length, width) {
     return allPixels;
 }
 
-function getOffset(idx, length, width) {
-    const move = (length + width) / 2 + 1;
-    const offsetX = has([0, 6, 3], idx) ? move :
-                    has([5, 4], idx) ? 2 * move : 0;
-    const offsetY = has([0], idx) ? -1 * move :
-                    has([6], idx) ? move :
-                    has([2, 4], idx) ? 2 * move :
-                    has([3], idx) ? 3 * move : 0;
+function getOffset(idx, height, width) {
+    const offset = (height + width) / 2 + 1;
+    const offsetX = has([0, 6, 3], idx) ? offset :
+                    has([5, 4], idx) ? 2 * offset : 0;
+    const offsetY = has([0], idx) ? -1 * offset :
+                    has([6], idx) ? offset :
+                    has([2, 4], idx) ? 2 * offset :
+                    has([3], idx) ? 3 * offset : 0;
 
     return { offsetX, offsetY };
 }
@@ -50,11 +50,18 @@ function LEDDigit(props) {
     const { digit } = props;
     const allPixels = getAllPixels(height, width);
     const digitPixels = getDigitSpecificPixels(allPixels, digit);
+    const containerWidth = (height + width);
+    const digitStyle = {
+        width: `${containerWidth * (digit === 1 ? 0.7 : 1.5)}px`,
+        height: `100px`,
+        display: 'inline-block',
+        position: 'relative',
+    }
 
     return (
-        <div className="digit">
+        <span style={digitStyle}>
             {digitPixels.map(pixel => <LEDPixel {...pixel}></LEDPixel>)}
-        </div>
+        </span>
     );
 }
 
