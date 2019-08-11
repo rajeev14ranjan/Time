@@ -1,8 +1,7 @@
 import React from 'react';
 import './ledPixel.css';
 
-function LEDPixel(props) {
-    const { length = 100, rotate = 0, offsetX = 0, offsetY = 0, width = 10 } = props;
+function LEDPixel({ length = 100, rotate = 0, offsetX = 0, offsetY = 0, width = 10 }) {
     const l = length;
     const w = width / 2;
 

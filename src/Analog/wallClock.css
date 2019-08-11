@@ -1,0 +1,35 @@
+
+.container{
+    height: 240px;
+    width: 240px;
+    margin: 25px auto;
+}
+
+.rim{
+    height: 220px;
+    width: 220px;
+    border-radius:50%;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    background-image: url('../files/clockbg2.png');
+    background-size: 220px 225px;
+    background-position: center center;
+}
+
+.hour{
+    position: absolute;
+    top:50%;
+    left:50%;
+}
+
+.centerDot{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 15px;
+    height: 15px;   
+    left:50%;
+    top:50%;
+    background-color: rgba(247, 1, 1, 0.434);
+    border-radius: 50%;
+}

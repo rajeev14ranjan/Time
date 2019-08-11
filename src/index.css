@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
 }
 
 .disable-select {
@@ -11,3 +12,15 @@ body {
   user-select: none;
 }
 
+.pos-a{
+  position: absolute;
+}
+
+
+.ml-10{
+  margin-left: 10px;
+}
+
+.ml-20{
+  margin-left: 20px;
+}
