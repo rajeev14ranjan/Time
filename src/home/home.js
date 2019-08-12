@@ -1,7 +1,7 @@
 import React from "react";
 import "./home.css";
 import { Layout, Menu, Icon } from "antd";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,Redirect, Route, Link } from "react-router-dom";
 import { DigitalClock } from "../Routers/DigitalClock";
 import { AnalogClock } from "../Routers/AnalogClock";
 
@@ -50,7 +50,7 @@ function Home() {
                 }
               >
                 <Menu.Item key="1">
-                  <Link to="/">LED Clock</Link>
+                  <Link to="/digital">LED Clock</Link>
                 </Menu.Item>
               </SubMenu>
               <SubMenu
@@ -77,7 +77,8 @@ function Home() {
                 minHeight: 280
               }}
             >
-              <Route exact path="/" component={DigitalClock} />
+              <Redirect exact from="/" to="digital" />
+              <Route  path="/digital" component={DigitalClock} />
               <Route path="/analog" component={AnalogClock} />
             </Content>
           </Layout>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Dot from '../../Common/dot';
 import LEDDigit from '../ledDigit/ledDigit';
 
-function LEDClock({ showSecond, timeFormat }) {
+function LEDClock({ showSecond, timeFormat, forceUpdate, foceUpdateCallback }) {
   const [hours, setHour] = useState(getCurrentTimeArray('h'));
   const [minutes, setMinute] = useState(getCurrentTimeArray('m'));
   const [seconds, setSecond] = useState(getCurrentTimeArray('s'));
@@ -29,9 +29,14 @@ function LEDClock({ showSecond, timeFormat }) {
   }
 
   useEffect(() => {
-    const ms = 1e3 * (showSecond ? 1 : 60 - 10 * seconds[0] - seconds[1]);
-    const timerID = setTimeout(updateTime, ms);
-    return () => clearTimeout(timerID);
+    if(forceUpdate){
+      updateTime();
+      foceUpdateCallback(false);
+    }else{
+      const ms = 1e3 * (showSecond ? 1 : 60 - 10 * seconds[0] - seconds[1]);
+      const timerID = setTimeout(updateTime, ms);
+      return () => clearTimeout(timerID);
+    }
   });
 
   return (
